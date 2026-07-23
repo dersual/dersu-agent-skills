@@ -2,9 +2,10 @@
 
 A personal repository of agent skills and behavior rules for easy synchronization across different devices and environments.
 
-## 📋 Behavioral Rules
+## 📋 Behavioral Rules & System Setup
 
 * [AGENTS.md](AGENTS.md): Project-scoped rules and behavioral guidelines (cloned from global `GEMINI.md`) containing strategies to reduce common LLM coding mistakes, ensuring epistemic safety, goal-driven execution, and surgical edits.
+* [PLUGINS-AND-MCP.md](PLUGINS-AND-MCP.md): Setup and reference guide for environment MCP servers (`github`, `context7`, `StitchMCP`) and registered plugins (`modern-web-guidance-plugin`, `firebase`, `android-cli-plugin`).
 
 ---
 
