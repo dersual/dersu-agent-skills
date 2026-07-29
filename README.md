@@ -18,6 +18,8 @@ A personal repository of agent skills and behavior rules for easy synchronizatio
 - **[grill-me](skills/grill-me/SKILL.md)**: Interactive interviewing and plan stress-testing, resolving design decisions branch by branch.
 - **[grill-with-docs](skills/grill-with-docs/SKILL.md)**: Refines implementation plans by stress-testing them against project docs.
 - **[handoff](skills/handoff/SKILL.md)**: Generates clear, concise handoff notes for the next agent session.
+- **[humanizer](skills/humanize/SKILL.md)**: Converts technical, formal, or robotic text into natural, human-friendly prose.
+- **[orwell-writing](skills/orwell-writing/SKILL.md)**: Draft, rewrite, edit, review, polish, copyedit, simplify, humanize, or create written prose using George Orwell's six rules and ASD-STE100 Simplified Technical English.
 - **[prototype](skills/prototype/SKILL.md)**: Build throwaway prototypes (logic state models or UI variations) to answer design questions fast.
 - **[solid](skills/solid/SKILL.md)**: Elevates software design quality using SOLID principles and clean code methodologies.
 - **[study-tutor](skills/study-tutor/SKILL.md)**: A generalized version of the tutor skill designed to patiently guide learning for any general academic topic or concept using analogies and active verification.
