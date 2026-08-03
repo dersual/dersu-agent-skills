@@ -9,7 +9,9 @@ A personal repository of agent skills and behavior rules for easy synchronizatio
 
 ---
 
-## 🛠️ Active Skills
+## 🛠️ Local Skills (This Repository)
+
+The 16 core custom skills stored locally in `skills/`:
 
 - **[caveman](skills/caveman/SKILL.md)**: Ultra-compressed, token-saving communication mode.
 - **[code-tutor](skills/code-tutor/SKILL.md)**: Interactive tutor mode that teaches programming concepts step-by-step using small code chunks and checks understanding.
@@ -18,11 +20,11 @@ A personal repository of agent skills and behavior rules for easy synchronizatio
 - **[grill-me](skills/grill-me/SKILL.md)**: Interactive interviewing and plan stress-testing, resolving design decisions branch by branch.
 - **[grill-with-docs](skills/grill-with-docs/SKILL.md)**: Refines implementation plans by stress-testing them against project docs.
 - **[handoff](skills/handoff/SKILL.md)**: Generates clear, concise handoff notes for the next agent session.
-- **[humanizer](skills/humanize/SKILL.md)**: Converts technical, formal, or robotic text into natural, human-friendly prose.
+- **[humanizer](skills/humanizer/SKILL.md)**: Converts technical, formal, or robotic text into natural, human-friendly prose.
 - **[orwell-writing](skills/orwell-writing/SKILL.md)**: Draft, rewrite, edit, review, polish, copyedit, simplify, humanize, or create written prose using George Orwell's six rules and ASD-STE100 Simplified Technical English.
 - **[prototype](skills/prototype/SKILL.md)**: Build throwaway prototypes (logic state models or UI variations) to answer design questions fast.
 - **[solid](skills/solid/SKILL.md)**: Elevates software design quality using SOLID principles and clean code methodologies.
-- **[study-tutor](skills/study-tutor/SKILL.md)**: A generalized version of the tutor skill designed to patiently guide learning for any general academic topic or concept using analogies and active verification.
+- **[study-tutor](skills/study-tutor/SKILL.md)**: A patient study tutor designed to patiently guide learning for any topic or concept using analogies and active verification.
 - **[teach](skills/teach/SKILL.md)**: Structured teaching and educational guidance.
 - **[wayfinder](skills/wayfinder/SKILL.md)**: Plan large multi-session efforts as a shared map of decision tickets on an issue tracker.
 - **[writing-great-skills](skills/writing-great-skills/SKILL.md)**: Reference and vocabulary for writing and editing predictable agent skills.
@@ -30,54 +32,57 @@ A personal repository of agent skills and behavior rules for easy synchronizatio
 
 ---
 
+## 📦 External Skills Suite ([mattpocock/skills](https://github.com/mattpocock/skills))
+
+We use [mattpocock/skills](https://github.com/mattpocock/skills) as our primary external skill set (replacing `addyosmani/agent-skills`). The 26 installed skills from this suite include:
+
+- **ask-matt**: Ask Matt Pocock AI assistant for advice on TypeScript, web development, and agent workflows.
+- **batch-grill-me**: Batch processing for grill-me plan stress-testing.
+- **claude-handoff**: Generate handoff context formatted specifically for Claude and agent transitions.
+- **codebase-design**: Design deep, clean module boundaries and interfaces for codebases.
+- **code-review**: Systematic multi-axis code review.
+- **design-an-interface**: Explore and generate multiple contrasting API/interface designs.
+- **diagnosing-bugs**: Disciplined diagnosis loop for complex bugs and performance regressions.
+- **domain-modeling**: Define and refine domain terminology, models, and ubiquitous language.
+- **edit-article**: Refine and edit articles for clarity, flow, and impact.
+- **grilling**: Relentlessly stress-test plans, architecture decisions, and ideas.
+- **implement**: Drive end-to-end task implementation with verification steps.
+- **improve-codebase-architecture**: Analyze and refactor codebase architecture for maintainability.
+- **qa**: Conversational QA and bug logging session.
+- **research**: Conduct deep background research against official documentation and primary sources.
+- **resolving-merge-conflicts**: Guided resolution of git merge and rebase conflicts.
+- **setup-matt-pocock-skills**: Skill installer and setup helper for Matt Pocock's skills repository.
+- **setup-pre-commit**: Configure pre-commit hooks (Husky, lint-staged, Prettier, tests).
+- **tdd**: Test-driven development workflow (red-green-refactor loop).
+- **to-questionnaire**: Convert ambiguous ideas into structured clarification questionnaires.
+- **to-spec**: Turn user requests and ideas into comprehensive technical specifications.
+- **to-tickets**: Break down specs and plans into actionable, trackable task tickets.
+- **triage**: Triage incoming bugs, requests, and issue reports.
+- **wizard**: Interactive step-by-step setup wizard for features and configs.
+- **writing-beats**: Structure prose and technical documentation using narrative beats.
+- **writing-fragments**: Draft modular prose fragments for documentation and essays.
+- **writing-shape**: Outline overall document flow and structural shape before writing.
+
+---
+
 ## ⚠️ Deprecated Skills
 
-The following skills have been moved to the `deprecated/` directory because their functionality is superseded by [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills):
+The following skills in `deprecated/` are superseded by [mattpocock/skills](https://github.com/mattpocock/skills):
 
-- **[branch-code-review](deprecated/branch-code-review/SKILL.md)**: Deprecated in favor of `code-review-and-quality` and the `code-reviewer` subagent from `addyosmani/agent-skills`.
-- **[tdd](deprecated/tdd/SKILL.md)**: Deprecated in favor of `test-driven-development` and the `test-engineer` subagent from `addyosmani/agent-skills`.
-
----
-
-## 📦 External Skills & Antigravity Plugins
-
-We rely on [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) for standard software engineering workflows (e.g., TDD, code review, security audits, performance profiling).
-
-### Installation Methods
-
-> [!IMPORTANT]
-> Standard installation via `npx skills add` only installs skill markdown definitions. If you are using **Google Antigravity / Gemini CLI**, install it as a **Plugin** so that its bundled **subagents** (`code-reviewer`, `security-auditor`, `test-engineer`, `web-performance-auditor`) are also loaded and registered!
-
-#### 1. Antigravity / Gemini CLI Plugin Installation (Recommended for AGY)
-
-To gain access to both skills and subagents in Antigravity:
-
-```bash
-# Clone into the Antigravity plugins directory:
-git clone https://github.com/addyosmani/agent-skills.git ~/.gemini/config/plugins/agent-skills
-```
-
-Or via CLI plugin commands (if available in your AGY setup):
-
-```bash
-gemini plugin add addyosmani/agent-skills
-# or
-agy plugin add addyosmani/agent-skills
-```
-
-#### 2. General Agent Skills Installation
-
-If you only need the skills globally across standard agent skill loaders:
-
-```bash
-npx skills add addyosmani/agent-skills -g --all
-```
+- **[branch-code-review](deprecated/branch-code-review/SKILL.md)**: Deprecated in favor of `code-review` from `mattpocock/skills`.
+- **[tdd](deprecated/tdd/SKILL.md)**: Deprecated in favor of `tdd` from `mattpocock/skills`.
 
 ---
 
-## 🚀 How to Synchronize This Repository
+## 🚀 Installation & Synchronization
 
-To install all active skills from this repository globally on any new machine:
+To install external skills from `mattpocock/skills` globally:
+
+```bash
+npx skills add mattpocock/skills -g --all
+```
+
+To synchronize local skills from this repository:
 
 ```bash
 npx skills add <username>/dersu-agent-skills -g --all

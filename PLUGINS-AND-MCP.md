@@ -92,14 +92,7 @@ Below are the official documentation links, GitHub repositories, and sample conf
 
 Plugins are installed under `~/.gemini/config/plugins/`.
 
-### 1. [agent-skills](https://github.com/addyosmani/agent-skills)
-* **Description**: Comprehensive suite of software engineering skills and subagents (`code-reviewer`, `security-auditor`, `test-engineer`, `web-performance-auditor`).
-* **Repository**: [https://github.com/addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)
-* **Installation**: See [README.md](README.md#📦-external-skills--antigravity-plugins).
-
----
-
-### 2. [modern-web-guidance-plugin](https://github.com/GoogleChrome/modern-web-guidance)
+### 1. [modern-web-guidance-plugin](https://github.com/GoogleChrome/modern-web-guidance)
 * **Description**: Curated collection of agent skills for modern web development by Chrome and Edge teams.
 * **Repository**: [https://github.com/GoogleChrome/modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance)
 * **Installation**:
@@ -111,20 +104,27 @@ Plugins are installed under `~/.gemini/config/plugins/`.
 
 ---
 
-### 3. [firebase agent-skills](https://github.com/firebase/agent-skills)
+### 2. [firebase agent-skills](https://github.com/firebase/agent-skills)
 * **Description**: Official Firebase agent skills (`firebase-basics`, `firebase-auth-basics`, `firebase-app-hosting-basics`, `firebase-ai-logic-basics`, `firebase-crashlytics`).
 * **Repository**: [https://github.com/firebase/agent-skills](https://github.com/firebase/agent-skills)
 * **Official Docs**: [https://firebase.google.com/docs/cli](https://firebase.google.com/docs/cli)
 
 ---
 
-### 4. [android-cli-plugin](https://github.com/android/skills)
+### 3. [android-cli-plugin](https://github.com/android/skills)
 * **Description**: Official Android developer tools plugin providing `android-cli` skills for SDK management, project creation, emulator orchestration, and build diagnostics.
 * **Repository**: [https://github.com/android/skills](https://github.com/android/skills)
 
 ---
 
 ## 🤗 Additional Skill Sources
+
+### [mattpocock/skills](https://github.com/mattpocock/skills)
+* **Description**: Primary external skill suite replacing `addyosmani/agent-skills`, providing 26 software engineering, design, grilling, spec generation, and prompt refinement skills.
+* **Repository**: [https://github.com/mattpocock/skills](https://github.com/mattpocock/skills)
+* **Installation**: See [README.md](README.md#📦-external-skills-suite-mattpocockskills).
+
+---
 
 ### [Hugging Face Skills](https://github.com/huggingface/skills)
 * **Repository**: [https://github.com/huggingface/skills](https://github.com/huggingface/skills)
