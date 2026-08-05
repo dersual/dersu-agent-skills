@@ -11,7 +11,7 @@ A personal repository of agent skills and behavior rules for easy synchronizatio
 
 ## 🛠️ Local Skills (This Repository)
 
-The 16 core custom skills stored locally in `skills/`:
+The 18 core custom skills stored locally in `skills/`:
 
 - **[caveman](skills/caveman/SKILL.md)**: Ultra-compressed, token-saving communication mode.
 - **[code-tutor](skills/code-tutor/SKILL.md)**: Interactive tutor mode that teaches programming concepts step-by-step using small code chunks and checks understanding.
@@ -23,8 +23,10 @@ The 16 core custom skills stored locally in `skills/`:
 - **[humanizer](skills/humanizer/SKILL.md)**: Converts technical, formal, or robotic text into natural, human-friendly prose.
 - **[orwell-writing](skills/orwell-writing/SKILL.md)**: Draft, rewrite, edit, review, polish, copyedit, simplify, humanize, or create written prose using George Orwell's six rules and ASD-STE100 Simplified Technical English.
 - **[prototype](skills/prototype/SKILL.md)**: Build throwaway prototypes (logic state models or UI variations) to answer design questions fast.
+- **[refine-resume-bank](skills/refine-resume-bank/SKILL.md)**: Audits and refines project experiences into high-impact Master Resume Bullet Bank entries using strict software engineering standards.
 - **[solid](skills/solid/SKILL.md)**: Elevates software design quality using SOLID principles and clean code methodologies.
 - **[study-tutor](skills/study-tutor/SKILL.md)**: A patient study tutor designed to patiently guide learning for any topic or concept using analogies and active verification.
+- **[tailor-resume](skills/tailor-resume/SKILL.md)**: Generates a 1-page tailored LaTeX resume targeted at a specific job description or role by curating and prioritizing bullets from the Master Resume Bullet Bank.
 - **[teach](skills/teach/SKILL.md)**: Structured teaching and educational guidance.
 - **[wayfinder](skills/wayfinder/SKILL.md)**: Plan large multi-session efforts as a shared map of decision tickets on an issue tracker.
 - **[writing-great-skills](skills/writing-great-skills/SKILL.md)**: Reference and vocabulary for writing and editing predictable agent skills.
