@@ -11,58 +11,61 @@ A personal repository of agent skills and behavior rules for easy synchronizatio
 
 ## 🛠️ Local Skills (This Repository)
 
-The 18 core custom skills stored locally in `skills/`:
+The 10 core custom skills stored locally in `skills/`:
 
 - **[caveman](skills/caveman/SKILL.md)**: Ultra-compressed, token-saving communication mode.
 - **[code-tutor](skills/code-tutor/SKILL.md)**: Interactive tutor mode that teaches programming concepts step-by-step using small code chunks and checks understanding.
-- **[diagnose](skills/diagnose/SKILL.md)**: Structured diagnosis loops for reproducing, isolating, and fixing bugs.
 - **[find-skills](skills/find-skills/SKILL.md)**: CLI and workspace setup aid for discovering new capabilities.
-- **[grill-me](skills/grill-me/SKILL.md)**: Interactive interviewing and plan stress-testing, resolving design decisions branch by branch.
-- **[grill-with-docs](skills/grill-with-docs/SKILL.md)**: Refines implementation plans by stress-testing them against project docs.
-- **[handoff](skills/handoff/SKILL.md)**: Generates clear, concise handoff notes for the next agent session.
 - **[humanizer](skills/humanizer/SKILL.md)**: Converts technical, formal, or robotic text into natural, human-friendly prose.
 - **[orwell-writing](skills/orwell-writing/SKILL.md)**: Draft, rewrite, edit, review, polish, copyedit, simplify, humanize, or create written prose using George Orwell's six rules and ASD-STE100 Simplified Technical English.
-- **[prototype](skills/prototype/SKILL.md)**: Build throwaway prototypes (logic state models or UI variations) to answer design questions fast.
 - **[refine-resume-bank](skills/refine-resume-bank/SKILL.md)**: Audits and refines project experiences into high-impact Master Resume Bullet Bank entries using strict software engineering standards.
 - **[solid](skills/solid/SKILL.md)**: Elevates software design quality using SOLID principles and clean code methodologies.
 - **[study-tutor](skills/study-tutor/SKILL.md)**: A patient study tutor designed to patiently guide learning for any topic or concept using analogies and active verification.
 - **[tailor-resume](skills/tailor-resume/SKILL.md)**: Generates a 1-page tailored LaTeX resume targeted at a specific job description or role by curating and prioritizing bullets from the Master Resume Bullet Bank.
-- **[teach](skills/teach/SKILL.md)**: Structured teaching and educational guidance.
-- **[wayfinder](skills/wayfinder/SKILL.md)**: Plan large multi-session efforts as a shared map of decision tickets on an issue tracker.
-- **[writing-great-skills](skills/writing-great-skills/SKILL.md)**: Reference and vocabulary for writing and editing predictable agent skills.
 - **[zoom-out](skills/zoom-out/SKILL.md)**: Steps back to inspect code architecture and layout choices.
 
 ---
 
 ## 📦 External Skills Suite ([mattpocock/skills](https://github.com/mattpocock/skills))
 
-We use [mattpocock/skills](https://github.com/mattpocock/skills) as our primary external skill set (replacing `addyosmani/agent-skills`). The 26 installed skills from this suite include:
+We use [mattpocock/skills](https://github.com/mattpocock/skills) as our primary external skill set (replacing `addyosmani/agent-skills`). The 37 installed skills from this suite include:
 
 - **ask-matt**: Ask Matt Pocock AI assistant for advice on TypeScript, web development, and agent workflows.
 - **batch-grill-me**: Batch processing for grill-me plan stress-testing.
 - **claude-handoff**: Generate handoff context formatted specifically for Claude and agent transitions.
-- **codebase-design**: Design deep, clean module boundaries and interfaces for codebases.
 - **code-review**: Systematic multi-axis code review.
+- **codebase-design**: Design deep, clean module boundaries and interfaces for codebases.
 - **design-an-interface**: Explore and generate multiple contrasting API/interface designs.
 - **diagnosing-bugs**: Disciplined diagnosis loop for complex bugs and performance regressions.
 - **domain-modeling**: Define and refine domain terminology, models, and ubiquitous language.
 - **edit-article**: Refine and edit articles for clarity, flow, and impact.
+- **grill-me**: Interactive interviewing and plan stress-testing, resolving design decisions branch by branch.
+- **grill-with-docs**: Refine implementation plans by stress-testing them against project docs.
 - **grilling**: Relentlessly stress-test plans, architecture decisions, and ideas.
+- **handoff**: Structured handoff notes for next agent session.
 - **implement**: Drive end-to-end task implementation with verification steps.
 - **improve-codebase-architecture**: Analyze and refactor codebase architecture for maintainability.
+- **loop-me**: Keep agent in execution loop until goals/tests are verified.
+- **prototype**: Build throwaway prototypes (logic state models or UI variations) to answer design questions fast.
 - **qa**: Conversational QA and bug logging session.
 - **research**: Conduct deep background research against official documentation and primary sources.
 - **resolving-merge-conflicts**: Guided resolution of git merge and rebase conflicts.
+- **scaffold-exercises**: Create exercise directory structures with sections, problems, solutions, and explainers.
 - **setup-matt-pocock-skills**: Skill installer and setup helper for Matt Pocock's skills repository.
 - **setup-pre-commit**: Configure pre-commit hooks (Husky, lint-staged, Prettier, tests).
 - **tdd**: Test-driven development workflow (red-green-refactor loop).
+- **teach**: Structured teaching and educational guidance.
 - **to-questionnaire**: Convert ambiguous ideas into structured clarification questionnaires.
 - **to-spec**: Turn user requests and ideas into comprehensive technical specifications.
 - **to-tickets**: Break down specs and plans into actionable, trackable task tickets.
 - **triage**: Triage incoming bugs, requests, and issue reports.
+- **wait-what**: Halt and request user clarification when facing ambiguity or confusion.
+- **wayfinder**: Plan large multi-session efforts as a shared map of decision tickets on an issue tracker.
 - **wizard**: Interactive step-by-step setup wizard for features and configs.
 - **writing-beats**: Structure prose and technical documentation using narrative beats.
+- **writing-for-agents**: Create and edit predictable agent skills and guidance documents.
 - **writing-fragments**: Draft modular prose fragments for documentation and essays.
+- **writing-great-skills**: Reference and vocabulary for writing and editing predictable agent skills.
 - **writing-shape**: Outline overall document flow and structural shape before writing.
 
 ---
