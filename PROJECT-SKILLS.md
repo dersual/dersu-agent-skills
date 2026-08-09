@@ -10,15 +10,7 @@ Use this as a reference when a project calls for specialized capabilities that s
 
 ## How to Use
 
-When a project needs one of these resources:
-
-1. Identify the skill, plugin, or resource relevant to the project.
-2. Follow the upstream repository's or resource's official installation and usage instructions.
-3. Install or link it within the project/workspace rather than adding it to the global environment when project-level isolation is preferred.
-4. Document any project-specific installation or configuration required by contributors.
-5. For AI-generated prose or copy, use the [`humanizer`](./skills/humanizer/SKILL.md) skill when appropriate to remove common AI-writing patterns.
-
-Project-local resources may be placed in a repository's `skills/`, `.gemini/`, or other tool-specific project configuration directory depending on the resource and the AI coding environment being used.
+Project-local resources may be placed in a repository's `skills/`, `.gemini/`, `.agent/skills`, or other tool-specific project configuration directory depending on the resource and the AI coding environment being used.
 
 ---
 
@@ -61,18 +53,6 @@ A collection of skills for working with Hugging Face models, datasets, and relat
 This is particularly useful for LLM-based applications and research projects where model discovery, dataset exploration, evaluation, or other Hugging Face workflows are involved.
 
 See [`PLUGINS-AND-MCP.md`](./PLUGINS-AND-MCP.md) for the existing Hugging Face tooling example and general plugin/MCP documentation.
-
----
-
-## Humanizer
-
-### humanizer
-
-**Local skill:** [`skills/humanizer/SKILL.md`](./skills/humanizer/SKILL.md)
-
-Use the humanizer skill when AI-generated prose, documentation, copy, or other natural-language output needs to be revised to remove common AI-writing patterns and produce more natural, human-oriented writing.
-
-This skill is already maintained in this repository and can be referenced by project-specific workflows when needed.
 
 ---
 
