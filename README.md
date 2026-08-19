@@ -84,11 +84,11 @@ The following skills in `deprecated/` are superseded by [mattpocock/skills](http
 To install external skills from `mattpocock/skills` globally:
 
 ```bash
-npx skills add mattpocock/skills -g --all
+npx skills add mattpocock/skills
 ```
 
 To synchronize local skills from this repository:
 
 ```bash
-npx skills add <username>/dersu-agent-skills -g --all
+npx skills add dersual/dersu-agent-skills
 ```
