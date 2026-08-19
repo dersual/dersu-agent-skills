@@ -11,9 +11,10 @@ A personal repository of agent skills and behavior rules for easy synchronizatio
 
 ## 🛠️ Local Skills (This Repository)
 
-The 10 core custom skills stored locally in `skills/`:
+The 12 core custom skills stored locally in `skills/`:
 
 - **[caveman](skills/caveman/SKILL.md)**: Ultra-compressed, token-saving communication mode.
+- **[code-coach](skills/code-coach/SKILL.md)**: Strict senior technical lead mode that yields implementation legwork to the developer across Scaffold, Socratic, and Toy postures.
 - **[code-tutor](skills/code-tutor/SKILL.md)**: Interactive tutor mode that teaches programming concepts step-by-step using small code chunks and checks understanding.
 - **[find-skills](skills/find-skills/SKILL.md)**: CLI and workspace setup aid for discovering new capabilities.
 - **[humanizer](skills/humanizer/SKILL.md)**: Converts technical, formal, or robotic text into natural, human-friendly prose.
@@ -22,6 +23,7 @@ The 10 core custom skills stored locally in `skills/`:
 - **[solid](skills/solid/SKILL.md)**: Elevates software design quality using SOLID principles and clean code methodologies.
 - **[study-tutor](skills/study-tutor/SKILL.md)**: A patient study tutor designed to patiently guide learning for any topic or concept using analogies and active verification.
 - **[tailor-resume](skills/tailor-resume/SKILL.md)**: Generates a 1-page tailored LaTeX resume targeted at a specific job description or role by curating and prioritizing bullets from the Master Resume Bullet Bank.
+- **[toggle-code-coach](skills/toggle-code-coach/SKILL.md)**: Toggles active code-coach mode in project instructions (`CLAUDE.md`, `GEMINI.md`, or `AGENTS.md`).
 - **[zoom-out](skills/zoom-out/SKILL.md)**: Steps back to inspect code architecture and layout choices.
 
 ---
