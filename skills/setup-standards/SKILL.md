@@ -24,12 +24,12 @@ If `AGENTS.md` does not exist:
 - Copy the baseline from `templates/AGENTS.md`.
 
 If `AGENTS.md` (or equivalent) already exists:
-- Perform a non-destructive audit. Ensure the 4 core pillars are present:
+- Perform a non-destructive audit. Ensure the core pillars are present:
   1. **Think Before Coding** (state assumptions, ask when uncertain)
   2. **Simplicity First** (minimum code, no single-use speculative abstractions)
-  3. **Surgical Changes** (touch only what you must, match local style)
+  3. **Surgical Changes** (touch only what you must, match local style, isolate refactors)
   4. **Epistemic Boundaries** (never guess unverified API contracts)
-  5. **Goal-Driven Execution** (verifiable success criteria)
+  5. **Goal-Driven Execution** (verifiable success criteria, small incremental slices)
 - Preserve any project-specific rules already documented.
 
 ### 3. Scaffold or Update `CODING_STANDARDS.md`
@@ -37,10 +37,10 @@ If `AGENTS.md` (or equivalent) already exists:
 If `CODING_STANDARDS.md` does not exist:
 - Copy the template from `templates/CODING_STANDARDS.md`.
 - Tailor language-specific notes if relevant (e.g., TS strict type notes or Python type hints), while preserving the core four sections:
-  1. **Structure & Simplicity (Code Judo)** (no useless indirection, flat control flow, focused modules)
+  1. **Structure & Simplicity (Code Judo)** (no useless indirection, flat control flow, focused modules, contract/alias stability)
   2. **Types & Invariants** (no type escapes, parse at the boundary, simple data structures)
-  3. **Anti-Slop** (no narration comments, no paranoia `try/catch` in trusted code, match local idioms)
-  4. **Tests** (behavior-focused, avoid excessive mocks)
+  3. **Anti-Slop** (no narration comments, preserve navigation banners, natural prose, no paranoia `try/catch`, match local idioms)
+  4. **Tests** (public seams, avoid tautological tests and excessive mocks)
 
 If `CODING_STANDARDS.md` already exists:
 - Propose additions for missing anti-slop or structural simplicity rules while preserving existing team standards.

@@ -42,6 +42,7 @@ When your changes create orphans:
 
 - Remove imports/variables/functions that YOUR changes made unused.
 - Don't remove pre-existing dead code unless asked.
+- Isolate refactors: Keep pure refactoring/formatting changes strictly separate from new functional feature additions.
 
 The test: Every changed line should trace directly to the user's request.
 
@@ -57,6 +58,9 @@ If you encounter a library, module, or assembly that is not in the current conte
 ## 4. Goal-Driven Execution
 
 **Define success criteria. Loop until verified.**
+
+- **Small, Incremental Slices:** Deliver complex features in small, self-contained, and verifiable increments rather than massive diffs.
+- **Pin Before Refactoring:** When modifying existing logic, write characterization tests to pin current behavior before changing implementation.
 
 Transform tasks into verifiable goals:
 
