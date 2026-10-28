@@ -22,6 +22,7 @@ The 13 core custom skills stored locally in `skills/`:
 - **[refine-resume-bank](skills/refine-resume-bank/SKILL.md)**: Audits and refines project experiences into high-impact Master Resume Bullet Bank entries using strict software engineering standards.
 - **[setup-permissions](skills/setup-permissions/SKILL.md)**: Interactively configures runtime permission boundaries (allow, ask, deny) for agent harnesses across workspaces, commands, and sensitive files.
 - **[setup-standards](skills/setup-standards/SKILL.md)**: Scaffolds or standardizes repository coding standards (`CODING_STANDARDS.md`) and agent behavioral guidelines (`AGENTS.md`).
+- **[show-me](skills/show-me/SKILL.md)**: Visualizes the current topic of conversation with concise diagrams, code-shape sketches, and focused HTML artifacts.
 - **[study-tutor](skills/study-tutor/SKILL.md)**: A patient study tutor designed to patiently guide learning for any topic or concept using analogies and active verification.
 - **[tailor-resume](skills/tailor-resume/SKILL.md)**: Generates a 1-page tailored LaTeX resume targeted at a specific job description or role by curating and prioritizing bullets from the Master Resume Bullet Bank.
 - **[toggle-code-coach](skills/toggle-code-coach/SKILL.md)**: Toggles active code-coach mode in project instructions (`CLAUDE.md`, `GEMINI.md`, or `AGENTS.md`).
