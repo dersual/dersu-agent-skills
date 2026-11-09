@@ -31,4 +31,24 @@ Engineering conventions and quality standards for this codebase. Evaluated durin
 
 - **Public Seams & Invariants**: Test observable public behavior and contracts, not private internal mechanics.
 - **No Tautological Tests**: Avoid tests that merely re-assert mocks or mirror implementation details.
-- **Avoid Excessive Mocking**: Prefer fast, deterministic integration and unit tests over heavy mock graphs.
+- **Avoid Excessive Mocking**: Prefer fast, deterministic integration and unit tests over heavy mock graphs. Never mock the primary integration boundary (IPC, disk, child process).
+
+## 5. Five-Axis Quality Contract & Verification Invariants
+
+Evaluated during `/code-review` across five mandatory dimensions:
+
+1. **Correctness:** Logic satisfies all acceptance criteria under nominal and boundary inputs. Tests assert actual output values, not just that code executed without throwing.
+2. **Security:** Inputs parsed at perimeter; credentials kept out of git; IPC channels validated.
+3. **Architecture:** Respects deep module boundaries; avoids circular dependencies; maintains layer separation.
+4. **Performance:** Optimal algorithms; no premature allocation or memory leaks.
+5. **Readability:** Clean, idiomatic, self-documenting code free of AI conversational slop.
+
+### Mandatory Anti-Rationalization Table
+
+| Prohibited Agent Rationalization | Mandatory System Rebuttal |
+| :--- | :--- |
+| *"I mocked this dependency because running the real service is slow or complex."* | **REJECTED.** Tautological mocks that do not reflect runtime reality cause outages. Tests must verify against the real observable boundary (Electron IPC, real disk, real subprocesses). |
+| *"The test executed without throwing an error, so the feature works."* | **REJECTED.** Execution without asserting output values, ANSI sequences, or state changes is a false positive. You must assert actual output. |
+| *"I will write the implementation now and add tests later."* | **REJECTED.** Untested code is unverified debt. Write the failing test first (Red-Green-Refactor). |
+| *"I added optional chaining `?.` or a try/catch to silence the undefined error."* | **REJECTED.** Fix root causes. Never mask upstream contract corruption with defensive guards. |
+| *"I removed this assertion or linter rule because it was failing."* | **REJECTED (Chesterton’s Fence).** Document why the constraint was added before altering it. |
