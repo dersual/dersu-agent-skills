@@ -35,7 +35,9 @@ Look for the originating spec, in this order:
 
 Search the repo for every file that documents how code should be written. When `CODING_STANDARDS.md` or `CONTRIBUTING.md` exists, it must be on the list.
 
-When `CODING_STANDARDS.md` exists, inspect Section 5 (**The Five-Axis Quality Contract**):
+Read the repository's documented standards in full and abide strictly by all their rules (e.g. Structure & Simplicity / Code Judo, Boundary Types & Invariants, Anti-Slop, and Testing Seams).
+
+When `CODING_STANDARDS.md` exists, evaluate the diff against all its sections, giving special scrutiny to Section 5 (**The Five-Axis Quality Contract**):
 - **Functionality**: Does the code solve the actual problem without regression or tautological mocks?
 - **Invariants**: Are boundary types, auth, and state preconditions strictly enforced?
 - **Performance / Resource Limits**: Does it respect memory, CPU, and network boundaries without premature complexity?

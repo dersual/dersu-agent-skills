@@ -1,6 +1,6 @@
 ---
 name: setup-repo
-description: "Configure this repo for the engineering harness: set up its issue tracker, triage label vocabulary, domain doc layout (GLOSSARY.md & ADRs), and coding standards (CODING_STANDARDS.md) with anti-rationalization guards."
+description: "Configure this repo for the engineering harness: set up its issue tracker, triage label vocabulary (including complexity tags for arena), domain doc layout, coding standards via setup-standards, and optional runtime permissions via setup-permissions."
 disable-model-invocation: true
 ---
 
@@ -9,10 +9,10 @@ disable-model-invocation: true
 Scaffold the per-repo configuration that the engineering skills assume:
 
 - **Issue tracker**: where issues live (GitHub by default; local markdown is also supported out of the box).
-- **Triage labels**: the strings used for the five canonical triage roles.
+- **Triage labels**: the strings used for canonical lifecycle roles and execution hints (`complexity:high` / `arena`).
 - **Domain docs**: where `GLOSSARY.md` and ADRs live, and the consumer rules for reading them.
-- **Coding standards**: `CODING_STANDARDS.md` with the Five-Axis Quality Contract and Anti-Rationalization Table.
-- **Agent steering**: `AGENTS.md` with clear pointers.
+- **Coding standards**: scaffolds `CODING_STANDARDS.md` and `AGENTS.md` by calling `/setup-standards`.
+- **Runtime permissions**: optional interactive boundary configuration by calling `/setup-permissions`.
 
 This is a prompt-driven skill, not a deterministic script. Explore, present what you found, confirm with the user, then write.
 
@@ -49,19 +49,22 @@ Record the choice in `docs/agents/issue-tracker.md`.
 Ask:
 > Do you want to keep the default triage labels? (recommended: **yes**)
 
-Defaults: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`.
+Defaults:
+- Lifecycle roles: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`.
+- Execution hint tags: `complexity:high` (or `arena`) to signal high architectural uncertainty and trigger `/arena` parallel tournament mode during `/implement`.
 
 **Section C: Domain docs.**
 Default to single-context: one `GLOSSARY.md` at repo root + `docs/adr/`.
 Offer multi-context only when monorepo signals are present.
 
 **Section D: Coding standards.**
-Check if `CODING_STANDARDS.md` exists. If not, copy the template from `skills/setup-standards/templates/CODING_STANDARDS.md` with:
-- Structure & Simplicity (Code Judo)
-- Types & Boundary Invariants
-- Anti-Slop Guidelines
-- Tests & Seams
-- Five-Axis Quality Contract & Anti-Rationalization Table
+Check if `CODING_STANDARDS.md` exists. If not, invoke the `/setup-standards` skill directly to scaffold `CODING_STANDARDS.md` (Code Judo, Type Invariants, Anti-Slop, Seams, Section 5 Five-Axis Quality Contract, and Anti-Rationalization Table) and update `AGENTS.md`.
+
+**Section E: Runtime permissions.**
+Ask:
+> Do you want to configure runtime permission boundaries across workspaces, commands, and sensitive files? (recommended: **yes**)
+
+If yes, invoke the `/setup-permissions` skill to configure interactive permission boundaries (allow, ask, deny) for agent harnesses.
 
 ### 3. Confirm and edit
 

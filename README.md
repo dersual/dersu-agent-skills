@@ -68,7 +68,7 @@ Pedagogical skills designed to teach, tutor, lead, and verify understanding:
 - **[scaffold-exercises](skills/scaffold-exercises/SKILL.md)**: Generates structured exercise directories with problems, solutions, and explainers.
 - **[teach](skills/teach/SKILL.md)**: Structured curriculum and educational mission builder.
 - **[toggle-code-coach](skills/toggle-code-coach/SKILL.md)**: Toggles active code-coach mode in project instructions (`AGENTS.md` or `CLAUDE.md`).
-- **[ask-matt](skills/ask-matt/SKILL.md)**: AI advisory assistant for TypeScript, web architecture, and agent workflows.
+- **[ask-me](skills/ask-me/SKILL.md)**: Router over the skills in this repository.
 
 ---
 
