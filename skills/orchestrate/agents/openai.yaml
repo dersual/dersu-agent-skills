@@ -1,0 +1,3 @@
+interface:
+  display_name: "Orchestrate"
+  short_description: "Top-level workflow router for Feature, Bugfix, Refactor, and Research playbooks"
