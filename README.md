@@ -74,13 +74,11 @@ Pedagogical skills designed to teach, tutor, lead, and verify understanding:
 
 ### Tier 4: Writing & Anti-Slop
 
-High-signal writing, editing, resume generation, and research skills:
+High-signal writing, editing, and research skills:
 
 - **[humanizer](skills/humanizer/SKILL.md)**: Rewrites AI-sounding text into natural human prose without altering underlying meaning.
 - **[orwell-writing](skills/orwell-writing/SKILL.md)**: Prose drafting and editing guided by George Orwell's six rules and ASD-STE100 Simplified Technical English.
 - **[caveman](skills/caveman/SKILL.md)**: Ultra-compressed communication mode cutting token consumption ~75% while maintaining technical precision.
-- **[tailor-resume](skills/tailor-resume/SKILL.md)**: Generates tailored 1-page LaTeX resumes targeting specific job descriptions from a bullet bank.
-- **[refine-resume-bank](skills/refine-resume-bank/SKILL.md)**: Audits and refines engineering experiences into high-impact Master Resume Bullet Bank entries.
 - **[writing-for-agents](skills/writing-for-agents/SKILL.md)**: Guides the creation and editing of agent skills and behavior specifications.
 - **[writing-beats](skills/writing-beats/SKILL.md)**: Structures technical documents and prose using narrative beats.
 - **[writing-fragments](skills/writing-fragments/SKILL.md)**: Drafts modular prose fragments for technical documentation.
