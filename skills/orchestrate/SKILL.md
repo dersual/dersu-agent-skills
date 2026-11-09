@@ -14,7 +14,7 @@ Individual skills remain directly callable at any time (`/grill-me`, `/to-spec`,
 
 | Task Type | Trigger Signals | Canonical Playbook Sequence |
 | :--- | :--- | :--- |
-| **Feature** | New capability, user story, API endpoint, UI view | `/grill-me` → `/to-spec` → `/spec-audit` → `/to-tickets` → `/implement` → `/code-review` → `/retro` |
+| **Feature** | New capability, user story, API endpoint, UI view | `/grill-with-docs` (or `/grill-me`) → `/to-spec` → `/spec-audit` → `/to-tickets` → `/implement` → `/code-review` → `/retro` |
 | **Bugfix** | Broken behavior, throwing error, crash, regression | `/diagnosing-bugs` (tight red loop, root cause trace, regression test) → `/code-review` |
 | **Refactor** | Architecture cleanup, decoupling, dead code, technical debt | `/improve-codebase-architecture` → `/codebase-design` → Characterization Tests → `/to-tickets` (Expand-Contract) → `/implement` → `/code-review` |
 | **Research / Spike** | Unknown API, architectural uncertainty, exploratory evaluation | `/research` (docs & primary sources) OR `/prototype` (throwaway UI/logic spike) OR `/arena` (parallel tournament) |
@@ -24,7 +24,7 @@ Individual skills remain directly callable at any time (`/grill-me`, `/to-spec`,
 ## Playbook Workflows
 
 ### 1. Feature Playbook
-1. **Clarify Decisions:** Run `/grill-me` to resolve ambiguities and lock design trade-offs.
+1. **Clarify Decisions:** Run `/grill-with-docs` (if in a repository with domain docs, to update `GLOSSARY.md` and ADRs) or `/grill-me` (if stateless) to resolve ambiguities and lock design trade-offs.
 2. **Draft Specification:** Run `/to-spec` to record user stories, interface contracts, and testing seams. Enforces the Elephant Zero-Code Invariant.
 3. **Cold Audit:** Hand off immediately to `/spec-audit` for a stateless review. Must pass before tickets are created.
 4. **Decompose to DAG:** Run `/to-tickets` to generate vertical tracer-bullet slices with blocking edges.

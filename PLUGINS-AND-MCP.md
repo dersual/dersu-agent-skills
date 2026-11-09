@@ -119,10 +119,10 @@ Plugins are installed under `~/.gemini/config/plugins/`.
 
 ## 🤗 Additional Skill Sources
 
-### [mattpocock/skills](https://github.com/mattpocock/skills)
-* **Description**: Primary external skill suite replacing `addyosmani/agent-skills`, providing 26 software engineering, design, grilling, spec generation, and prompt refinement skills.
-* **Repository**: [https://github.com/mattpocock/skills](https://github.com/mattpocock/skills)
-* **Installation**: See [README.md](README.md#📦-external-skills-suite-mattpocockskills).
+### [dersu-agent-skills](https://github.com/dersual/dersu-agent-skills)
+* **Description**: Unified, self-contained suite of 49 engineering, architecture, pedagogical, and writing skills hardened with Google Elephant-Goldfish, Addy Osmani Anti-Rationalization, and Lauren Tan proof-or-dismiss verification.
+* **Repository**: Local `skills/` (or [https://github.com/dersual/dersu-agent-skills](https://github.com/dersual/dersu-agent-skills))
+* **Installation**: `npx skills add dersual/dersu-agent-skills`
 
 ---
 

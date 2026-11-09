@@ -20,7 +20,7 @@ While drafting a spec, strictly avoid writing production code, creating implemen
 
 Check with the user that these seams match their expectations.
 
-3. Write the spec using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
+3. Write the spec using the template below. Publish it to the project issue tracker with the `needs-audit` label (or save under `docs/specs/<feature>.md` or `.scratch/<feature>/spec.md`). Do NOT apply `ready-for-agent` yet.
 
 <spec-template>
 
@@ -80,4 +80,8 @@ Any further notes about the feature.
 
 ## 4. Mandatory Gate: Spec Audit
 
-Once the spec is drafted, do NOT proceed immediately to `/to-tickets`. Call `/spec-audit` to perform a cold, stateless review against ambiguity, under-specified interfaces, and missing failure modes. The spec must pass audit before tickets are created.
+Once the spec is drafted, do NOT proceed immediately to `/to-tickets`. Call `/spec-audit` to perform a cold, stateless review against ambiguity, under-specified interfaces, and missing failure modes.
+
+Only after `/spec-audit` returns **PASS**:
+- Apply the `ready-for-agent` triage label on the tracker.
+- Hand off to `/to-tickets` to slice the approved spec into vertical tracer bullets.

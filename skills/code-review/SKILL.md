@@ -93,6 +93,10 @@ Present the two reports under `## Standards` and `## Spec` headings, verbatim or
 
 End with a one-line summary: total findings per axis, and the worst issue _within each axis_ (if any). Don't pick a single winner across axes: that's the reranking the separation exists to prevent.
 
+Conclude with an explicit verdict:
+- `VERDICT: PASS` (if 0 hard violations and 0 missing spec requirements)
+- `VERDICT: REVISE` (if any hard violation or missing spec requirement exists)
+
 ## Why two axes
 
 A change can pass one axis and fail the other:

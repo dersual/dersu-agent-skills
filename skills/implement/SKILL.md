@@ -14,7 +14,7 @@ Run typechecking regularly, single test files regularly, and the full test suite
 
 Once done, call the Skill tool with "code-review" to review the work.
 
-Commit your work to the current branch.
+Commit your work to the current branch. In the commit message body, record the verification command used: `Verified-by: <terminal-test-command>`.
 
 ## Arena Execution Mode
 

@@ -49,7 +49,7 @@ If `CODING_STANDARDS.md` already exists:
 
 Confirm that `code-review` can locate the standards:
 - Ensure `CODING_STANDARDS.md` is in the repository root.
-- If `docs/agents/issue-tracker.md` is missing and the repo uses an issue tracker, suggest running `/setup-matt-pocock-skills` or configure the issue tracker pointer.
+- If `docs/agents/issue-tracker.md` is missing and the repo uses an issue tracker, suggest running `/setup-repo` or configure the issue tracker pointer.
 
 ### 5. Completion Summary
 
