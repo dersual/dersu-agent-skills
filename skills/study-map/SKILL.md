@@ -1,6 +1,6 @@
 ---
 name: study-map
-description: Build or incrementally update a subject's `TREE.md` (`Semantic Tree`: `Root`, 20% `Trunk`, `Branch`, `Leaf`, `Cross-Link`) and optional `COURSE.md` (`Course Overlay` for syllabi, lecture slides, problem sets, and deadlines). Use when setting up a new study folder, adding new weekly lecture slides or assignments, or auditing syllabus gaps.
+description: Map or incrementally update a subject's Semantic Tree (`TREE.md`) and Course Overlay (`COURSE.md`) from syllabi, lecture slides, textbooks, or new assignments.
 argument-hint: "[optional: subject name, syllabus path, or new slide files]"
 ---
 

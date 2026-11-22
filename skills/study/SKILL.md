@@ -1,6 +1,6 @@
 ---
 name: study
-description: Route and advise on studying an academic course or technical field. Inspects the current study workspace (`TREE.md`, `COURSE.md`, new lecture slides, `learning-records/`) and invokes `study-map`, `study-topic`, or `study-practice`. Use when the user says "/study", "help me study", "what should I study next", or wants to catch up on a class or subject.
+description: Route and advise on studying an academic course or technical subject. Inspects the study folder and invokes `study-map`, `study-topic`, or `study-practice`.
 argument-hint: "[optional: topic, assignment, or goal]"
 ---
 

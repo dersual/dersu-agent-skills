@@ -1,6 +1,6 @@
 ---
 name: study-topic
-description: Teach a concept node from `TREE.md` (or any subject topic) one step at a time using diagnostic binary-search probing (`Probe`), zoomed-in Mermaid/SVG/HTML visuals, and per-step `Lock-In Checks`. Writes clean study notes to `notes/<slug>.md` and chains into `study-practice`. Use when learning a new concept, filling a missing `Trunk` foundation, or reviewing a lecture topic.
+description: Teach a concept node one step at a time using diagnostic `Probe` pre-tests, diagrams/visualizers, clean study notes, and `Lock-In Checks`.
 argument-hint: "[topic or TREE.md node ID]"
 ---
 

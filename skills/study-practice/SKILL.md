@@ -1,6 +1,6 @@
 ---
 name: study-practice
-description: Run hands-on problem sets, flashcard decks, exam drills, or mini-projects with zero lecturing. Supports both auto-saving interactive HTML practice pages (`practice/set-NN-<slug>.html` backed by an on-demand local `practice/server.mjs`) and guided chat/code problem solving accepting code, LaTeX, prose, or photos of handwritten work (`Practice Artifacts`). Logs results and weak spots to `learning-records/`.
+description: Drill practice problems, flashcards, exam sets, or code projects via auto-saving HTML pages or guided feedback on code, LaTeX, and handwritten work photos.
 argument-hint: "[topic, TREE.md node, homework/exercise file, or 'html' / 'chat' / 'project']"
 ---
 
@@ -51,49 +51,65 @@ const MIME = {
 fs.mkdirSync(path.join(ROOT, "learning-records"), { recursive: true });
 fs.mkdirSync(path.join(ROOT, "practice", "submissions"), { recursive: true });
 
-function readBody(req) {
+function readBody(req, maxBytes = 25 * 1024 * 1024) {
   return new Promise((resolve, reject) => {
     const chunks = [];
-    req.on("data", (c) => chunks.push(c));
+    let size = 0;
+    req.on("data", (c) => {
+      size += c.length;
+      if (size > maxBytes) { req.destroy(); reject(new Error("Payload too large")); return; }
+      chunks.push(c);
+    });
     req.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
     req.on("error", reject);
   });
 }
 
+function appendResult(payload) {
+  const entry = { timestamp: new Date().toISOString(), ...payload };
+  fs.appendFileSync(path.join(ROOT, "learning-records", "results.jsonl"), JSON.stringify(entry) + "\n");
+}
+
+const cleanId = (s, fallback) => String(s || fallback).replace(/[^a-zA-Z0-9_-]/g, "") || fallback;
+
 http.createServer(async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  if (req.method === "OPTIONS") { res.writeHead(204); return res.end(); }
+  try {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    if (req.method === "OPTIONS") { res.writeHead(204); return res.end(); }
 
-  if (req.method === "POST" && req.url === "/api/record") {
-    const payload = JSON.parse(await readBody(req));
-    const entry = { timestamp: new Date().toISOString(), ...payload };
-    fs.appendFileSync(path.join(ROOT, "learning-records", "results.jsonl"), JSON.stringify(entry) + "\n");
-    res.writeHead(200, { "Content-Type": "application/json" });
-    return res.end(JSON.stringify({ ok: true }));
-  }
+    if (req.method === "POST" && req.url === "/api/record") {
+      appendResult(JSON.parse(await readBody(req)));
+      res.writeHead(200, { "Content-Type": "application/json" });
+      return res.end(JSON.stringify({ ok: true }));
+    }
 
-  if (req.method === "POST" && req.url === "/api/upload") {
-    const { setId, itemId, dataUrl, notes } = JSON.parse(await readBody(req));
-    const match = /^data:image\/(\w+);base64,(.+)$/.exec(dataUrl || "");
-    if (!match) { res.writeHead(400); return res.end(JSON.stringify({ ok: false })); }
-    const filename = `${setId || "set"}-${itemId || "item"}-${Date.now()}.${match[1]}`;
-    const relPath = path.join("practice", "submissions", filename);
-    fs.writeFileSync(path.join(ROOT, relPath), Buffer.from(match[2], "base64"));
-    const entry = { timestamp: new Date().toISOString(), setId, itemId, type: "image-submission", imagePath: relPath, notes };
-    fs.appendFileSync(path.join(ROOT, "learning-records", "results.jsonl"), JSON.stringify(entry) + "\n");
-    res.writeHead(200, { "Content-Type": "application/json" });
-    return res.end(JSON.stringify({ ok: true, imagePath: relPath }));
-  }
+    if (req.method === "POST" && req.url === "/api/upload") {
+      const { setId, itemId, dataUrl, notes } = JSON.parse(await readBody(req));
+      const match = /^data:image\/([a-zA-Z0-9+.-]+);base64,(.+)$/.exec(dataUrl || "");
+      if (!match) { res.writeHead(400); return res.end(JSON.stringify({ ok: false })); }
+      const ext = match[1] === "svg+xml" ? "svg" : match[1].replace(/[^a-zA-Z0-9]/g, "");
+      const filename = `${cleanId(setId, "set")}-${cleanId(itemId, "item")}-${Date.now()}.${ext}`;
+      const relPath = path.join("practice", "submissions", filename);
+      fs.writeFileSync(path.join(ROOT, relPath), Buffer.from(match[2], "base64"));
+      appendResult({ setId, itemId, type: "image-submission", imagePath: relPath, notes });
+      res.writeHead(200, { "Content-Type": "application/json" });
+      return res.end(JSON.stringify({ ok: true, imagePath: relPath }));
+    }
 
-  const cleanUrl = decodeURIComponent((req.url || "/").split("?")[0]);
-  const filePath = path.resolve(ROOT, "." + cleanUrl);
-  if (!filePath.startsWith(ROOT) || !fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
-    res.writeHead(404); return res.end("Not found");
+    const cleanUrl = decodeURIComponent((req.url || "/").split("?")[0]);
+    const filePath = path.resolve(ROOT, "." + cleanUrl);
+    const rel = path.relative(ROOT, filePath);
+    if (rel.startsWith("..") || path.isAbsolute(rel) || !fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
+      res.writeHead(404); return res.end("Not found");
+    }
+    res.writeHead(200, { "Content-Type": MIME[path.extname(filePath)] || "application/octet-stream" });
+    fs.createReadStream(filePath).pipe(res);
+  } catch (err) {
+    if (!res.headersSent) res.writeHead(400, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ ok: false, error: String(err.message || err) }));
   }
-  res.writeHead(200, { "Content-Type": MIME[path.extname(filePath)] || "application/octet-stream" });
-  fs.createReadStream(filePath).pipe(res);
 }).listen(PORT, "127.0.0.1", () => {
   console.log(`Study server running at http://127.0.0.1:${PORT}`);
 });
