@@ -11,6 +11,8 @@ All skills are maintained directly in `skills/` with zero external repository de
 - [AGENTS.md](AGENTS.md): Project-scoped rules and behavioral guidelines containing strategies to reduce common LLM coding mistakes, ensuring epistemic safety, goal-driven execution, and surgical edits.
 - [PLUGINS-AND-MCP.md](PLUGINS-AND-MCP.md): Setup and reference guide for environment MCP servers (`github`, `context7`, `StitchMCP`) and registered plugins (`modern-web-guidance-plugin`, `firebase`, `android-cli-plugin`).
 - [docs/research/ai-skills-ecosystem-comparison-and-workflow-synthesis.md](docs/research/ai-skills-ecosystem-comparison-and-workflow-synthesis.md): Definitive comparative analysis across Pocock, Osmani, Tan (`pstack`), and Google Elephant-Goldfish, detailing the architectural foundation and empirical autopsies.
+- [docs/research/learning-skills-primary-source-verification.md](docs/research/learning-skills-primary-source-verification.md): Primary-source verification of external AI learning systems (`amosblomqvist/learn`, `learnharness`, `Alvarmethod`, `pm-claude-skills`) mapped against `SESSION_POSTMORTEM_AND_GRIEVANCES.md`.
+- [docs/research/deep-learning-architecture-and-school-autopsy.md](docs/research/deep-learning-architecture-and-school-autopsy.md): Turn-by-turn forensic autopsy of `School Code`, cognitive science foundation analysis (Ausubel 1960, Collins & Quillian 1969, Novak & Gowin 1984), and the four-skill `study*` architecture evaluation.
 
 ---
 
@@ -61,14 +63,19 @@ Supporting architecture, refactoring, workspace setup, and delivery skills:
 
 Pedagogical skills designed to teach, tutor, lead, and verify understanding:
 
+- **[study](skills/study/SKILL.md)**: Stateful study workspace router and advisor. Inspects `TREE.md`, `COURSE.md`, new lecture slides, and `learning-records/` to route seamlessly into `study-map`, `study-topic`, or `study-practice`.
+- **[study-map](skills/study-map/SKILL.md)**: Setup and incremental mapper building a 1-screen `Semantic Tree` (`TREE.md`: `Root -> 20% Trunk -> Branch -> Leaf -> Cross-Link`) and optional `Course Overlay` (`COURSE.md`: 80/20 filtered slides, problem sets, deadlines, and syllabus gaps).
+- **[study-topic](skills/study-topic/SKILL.md)**: Diagnostic concept teacher running binary-search `Probe` pre-tests, 1-step-at-a-time teaching with SVG/Mermaid/HTML visuals (`visuals/`), clean study guides (`notes/`), and `Lock-In Checks`.
+- **[study-practice](skills/study-practice/SKILL.md)**: Problem, flashcard, and project drill engine supporting auto-saving HTML practice pages (`practice/server.mjs` writing to `learning-records/results.jsonl` and `practice/submissions/`), runnable code projects, and step-by-step chat feedback on code, LaTeX, or handwritten work photos.
 - **[code-coach](skills/code-coach/SKILL.md)**: Strict technical lead mode that yields implementation legwork to the developer across Scaffold, Socratic, and Toy postures.
 - **[code-tutor](skills/code-tutor/SKILL.md)**: Interactive tutor mode teaching programming concepts step-by-step using small code chunks and comprehension checks.
-- **[study-tutor](skills/study-tutor/SKILL.md)**: Patient study tutor guiding learning for academic subjects and complex concepts using analogies and active verification.
 - **[show-me](skills/show-me/SKILL.md)**: Visualizes topics with concise diagrams, code-shape sketches, and focused HTML artifacts.
 - **[scaffold-exercises](skills/scaffold-exercises/SKILL.md)**: Generates structured exercise directories with problems, solutions, and explainers.
-- **[teach](skills/teach/SKILL.md)**: Structured curriculum and educational mission builder.
+- **[teach](skills/teach/SKILL.md)**: Structured curriculum and educational mission builder for self-contained HTML lessons and reference sheets.
 - **[toggle-code-coach](skills/toggle-code-coach/SKILL.md)**: Toggles active code-coach mode in project instructions (`AGENTS.md` or `CLAUDE.md`).
 - **[ask-me](skills/ask-me/SKILL.md)**: Router over the skills in this repository.
+
+*(Archived / Deprecated: [`deprecated/study-tutor`](deprecated/study-tutor/SKILL.md), superseded by the stateful `study*` suite.)*
 
 ---
 

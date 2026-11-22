@@ -1,6 +1,7 @@
 ---
 name: study-tutor
-description: Use when the user wants to study, understand, or learn any topic, academic subject, or concept step by step. Teaches like a patient study tutor — explains simply first, gives analogies, shows information in bite-sized chunks, asks the learner to explain back, corrects misunderstandings, provides practice questions/scenarios, and ends with a memory hook. Do NOT dump full explanations all at once. Move at the learner's pace.
+description: "[DEPRECATED: Superseded by /study and /study-topic] Stateless study tutor."
+disable-model-invocation: true
 argument-hint: 'Describe the topic, concept, or subject you want to learn about.'
 ---
 
