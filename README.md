@@ -49,6 +49,7 @@ Supporting architecture, refactoring, workspace setup, and delivery skills:
 - **[tdd](skills/tdd/SKILL.md)**: Test-driven development workflow and mocking reference guidelines.
 - **[pr](skills/pr/SKILL.md)**: Drafts concise, high-signal pull request descriptions from git diffs.
 - **[prototype](skills/prototype/SKILL.md)**: Builds throwaway spikes (logic state models or UI variations) to answer design questions fast.
+- **[handoff](skills/handoff/SKILL.md)**: Compacts active conversation context into a portable handoff document in temp storage for a fresh or parallel agent.
 - **[wizard](skills/wizard/SKILL.md)**: Generates interactive bash wizards that guide humans through steps only they can perform.
 - **[triage](skills/triage/SKILL.md)**: Triages incoming bug reports and feature requests against project scope.
 - **[resolving-merge-conflicts](skills/resolving-merge-conflicts/SKILL.md)**: Guided resolution of in-progress git merge and rebase conflicts.
