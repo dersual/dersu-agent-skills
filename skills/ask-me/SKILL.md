@@ -94,6 +94,8 @@ Off the main flow entirely.
   - **`/study-topic`** to run a diagnostic `Probe` quiz and learn a concept node one step at a time with diagrams (`visuals/`), clean study notes (`notes/`), and `Lock-In Checks`,
   - **`/study-practice`** to drill problems, flashcards, code projects, or exam sets immediately (via auto-saving HTML pages backed by `practice/server.mjs` or guided chat/code evaluation of LaTeX, code, and photos of handwritten work).
 - **`/teach`**: learn a capability over multiple sessions via self-contained HTML lesson essays (`./lessons/*.html`) and printable reference sheets (`./reference/*.html`).
+- **`/code-coach`**: stateful learning-first engineering coach for building software without skill atrophy. Enforces open-ended `Build / Design / Implementation Checkpoints`, three selectable `Implementation Gears` (`Architect`, `Guided Pair`, `Hands-On`), Socratic debugging, `Toy Examples`, and two-layer `Verification Audits`. Stores learner/project state in `~/.agents/code-coach/` and toggles scoped auto-activation in your home-directory global instruction files via `/code-coach on|off|pause|global|status|reset` without polluting project repositories.
+- **`/code-tutor`**: standalone stateless code and concept explainer that walks through an unfamiliar code snippet, language mechanic, or algorithm in 5–15 line chunks with comprehension checks and primary-doc pointers.
 - **`/writing-for-agents`** is the reference for writing documents agents consume: skills, AGENTS.md, pointed-at docs.
 
 ## Precondition

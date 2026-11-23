@@ -68,15 +68,14 @@ Pedagogical skills designed to teach, tutor, lead, and verify understanding:
 - **[study-map](skills/study-map/SKILL.md)**: Setup and incremental mapper building a 1-screen `Semantic Tree` (`TREE.md`: `Root -> 20% Trunk -> Branch -> Leaf -> Cross-Link`) and optional `Course Overlay` (`COURSE.md`: 80/20 filtered slides, problem sets, deadlines, and syllabus gaps).
 - **[study-topic](skills/study-topic/SKILL.md)**: Diagnostic concept teacher running binary-search `Probe` pre-tests, 1-step-at-a-time teaching with SVG/Mermaid/HTML visuals (`visuals/`), clean study guides (`notes/`), and `Lock-In Checks`.
 - **[study-practice](skills/study-practice/SKILL.md)**: Problem, flashcard, and project drill engine supporting auto-saving HTML practice pages (`practice/server.mjs` writing to `learning-records/results.jsonl` and `practice/submissions/`), runnable code projects, and step-by-step chat feedback on code, LaTeX, or handwritten work photos.
-- **[code-coach](skills/code-coach/SKILL.md)**: Strict technical lead mode that yields implementation legwork to the developer across Scaffold, Socratic, and Toy postures.
-- **[code-tutor](skills/code-tutor/SKILL.md)**: Interactive tutor mode teaching programming concepts step-by-step using small code chunks and comprehension checks.
+- **[code-coach](skills/code-coach/SKILL.md)**: Stateful learning-first engineering coach combining open-ended Build/Design/Implementation Checkpoints, three Implementation Gears (`Architect`, `Guided Pair`, `Hands-On`), Socratic debugging, Toy Examples, two-layer Verification Audits, and zero-pollution home-directory toggling (`~/.agents/code-coach/`).
+- **[code-tutor](skills/code-tutor/SKILL.md)**: Standalone interactive explainer walking through unfamiliar code snippets, language mechanics, or algorithms step-by-step in 5–15 line chunks with comprehension checks and primary-doc pointers.
 - **[show-me](skills/show-me/SKILL.md)**: Visualizes topics with concise diagrams, code-shape sketches, and focused HTML artifacts.
 - **[scaffold-exercises](skills/scaffold-exercises/SKILL.md)**: Generates structured exercise directories with problems, solutions, and explainers.
 - **[teach](skills/teach/SKILL.md)**: Structured curriculum and educational mission builder for self-contained HTML lessons and reference sheets.
-- **[toggle-code-coach](skills/toggle-code-coach/SKILL.md)**: Toggles active code-coach mode in project instructions (`AGENTS.md` or `CLAUDE.md`).
 - **[ask-me](skills/ask-me/SKILL.md)**: Router over the skills in this repository.
 
-*(Archived / Deprecated: [`deprecated/study-tutor`](deprecated/study-tutor/SKILL.md), superseded by the stateful `study*` suite.)*
+*(Archived / Deprecated: [`deprecated/study-tutor`](deprecated/study-tutor/SKILL.md), superseded by the stateful `study*` suite; [`deprecated/toggle-code-coach`](deprecated/toggle-code-coach/SKILL.md), superseded by `/code-coach on|off|pause|status`.)*
 
 ---
 

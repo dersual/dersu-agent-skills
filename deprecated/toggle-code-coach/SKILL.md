@@ -1,6 +1,7 @@
 ---
 name: toggle-code-coach
-description: Toggles active code-coach mode in workspace instructions. Use when enabling, disabling, or toggling code-coach, coding mentor, or anti-atrophy mode.
+description: "[DEPRECATED: Superseded by /code-coach on|off|pause|status] Toggles active code-coach mode."
+disable-model-invocation: true
 ---
 
 Toggle the active state of `code-coach` mode in the workspace instructions.

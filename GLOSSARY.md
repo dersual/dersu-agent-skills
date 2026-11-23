@@ -45,3 +45,29 @@ _Avoid_: Final test, review sheet
 **Practice Artifact**:
 Learner-authored work submitted during problem solving—such as code, LaTeX derivations, prose explanations, or photos of handwritten math—used to diagnose exact reasoning steps.
 _Avoid_: Multiple-choice click, passive reading
+
+## Code Coaching & Learning-First Development
+
+**Build Checkpoint**:
+An open-ended reasoning prompt before design or code changes that requires the developer to articulate a technical approach, data representation, or trade-off in their own words.
+_Avoid_: Multiple-choice menu, automatic recommendation, AI-proposed plan
+
+**Design Checkpoint**:
+A formal pause summarizing the developer's chosen architecture, trade-offs, verification strategy, and any separated AI-proposed additions, recorded without authorizing code changes.
+_Avoid_: Rubber-stamp approval, silent architecture choice
+
+**Implementation Checkpoint**:
+A gated authorization pause that defines the exact coding and testing scope and selects the active Implementation Gear before any project files are created or modified.
+_Avoid_: Immediate code generation, unscoped edit
+
+**Implementation Gear**:
+One of three selectable divisions of labor after design approval: `Architect` (developer designs, agent writes code and tests), `Guided Pair` (agent writes plumbing and red tests, developer writes core logic), or `Hands-On` (agent outputs structural TODO scaffolds, developer writes all production logic and tests).
+_Avoid_: Rigid mode, single-style coaching
+
+**Verification Audit**:
+A two-layer post-implementation check combining pipeline verification (distinguishing tests written from E2E/unit checks actually executed) with human diff verification (prompting the developer to inspect a specific generated seam for failure modes or coverage gaps).
+_Avoid_: Passive summary, unverified diff
+
+**Toy Example**:
+A minimal, runnable code snippet demonstrating a language mechanic, library, or design pattern in an unrelated domain so the developer learns the underlying principle without being handed their project's solution.
+_Avoid_: Project code dump, abstract prose explanation
