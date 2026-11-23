@@ -1,22 +1,22 @@
 # Code Coach Home-Directory State Templates
 
-Create and maintain these Markdown files inside `~/.agents/code-coach/`. Never write them inside the project repository unless the developer explicitly asks to export a decision log or ADR into the repo.
+Maintain these Markdown files inside `~/.agents/code-coach/` as specified in [`SKILL.md`](SKILL.md).
 
 ```text
 ~/.agents/code-coach/
-├── profile.md                              # Shared across all projects on this machine
+├── profile.md                              # Global experience, default preferences & cross-project concept mastery
 └── projects/
     └── <project-slug>/
-        ├── project-map.md                  # Architecture, components, verification commands, unknowns
-        ├── progress.md                     # Pending decision + evidenced engineering reasoning & decision log
+        ├── project-map.md                  # Per-project coaching preferences, architecture map, test commands & unknowns
+        ├── progress.md                     # Pending decision + project decision log & evidenced reasoning
         └── backups/                        # Timestamped snapshots created before /code-coach reset
 ```
 
 ---
 
-## 1. `~/.agents/code-coach/profile.md`
+## 1. `~/.agents/code-coach/profile.md` (Global Developer Profile)
 
-Keep `profile.md` a compact snapshot of current preferences and cross-project mastery. Update existing entries in place rather than appending endless history.
+Keep `profile.md` a compact snapshot of cross-project experience, global default preferences, and evidenced mastery across repositories.
 
 ```markdown
 # Developer Coaching Profile
@@ -25,13 +25,12 @@ Onboarding: complete
 
 ## Experience
 Overall programming: [Beginner / Intermediate / Advanced]
-Stack familiarity: [e.g., TypeScript: Intermediate, Python: Intermediate, Rust: Beginner]
+Stack familiarity across languages: [e.g., TypeScript: Intermediate, Python: Intermediate, Rust: Beginner]
 
-## Coaching Preferences
+## Global Default Preferences (Inherited by new projects unless overridden in project-map.md)
 Default Implementation Gear: [Guided Pair / Architect / Hands-On]
-Checkpoint frequency: [Normal / Light / Frequent]
-Question style: [Open-ended / Mixed / Multiple choice]
-Verification Audit: [Active]
+Default Checkpoint frequency: [Normal / Light / Frequent]
+Default Question style: [Open-ended / Mixed / Multiple choice]
 
 ## Strong Concepts (Evidenced Across Projects)
 - None recorded yet.
@@ -45,19 +44,26 @@ Verification Audit: [Active]
 
 ---
 
-## 2. `~/.agents/code-coach/projects/<project-slug>/project-map.md`
+## 2. `~/.agents/code-coach/projects/<project-slug>/project-map.md` (Per-Project Preferences & Architecture Map)
 
-Distinguish **Proposed**, **Chosen**, **Implemented**, and **Unknown (`?`)** components. Never fill in unagreed architecture silently.
+Each project stores its own active coaching preferences (`Implementation Gear`, `Checkpoint frequency`, `Question style`, `Stack familiarity`, `Learning scope`) so a fast side-project can run `Architect` + `Light` while a core learning repo runs `Guided Pair` or `Hands-On` + `Normal`/`Frequent`.
 
 ```markdown
 # Project Map: <project-name>
 
 Workspace path: `<absolute-path-to-repo>`
 Situation: [New project / Existing repo]
+
+## Project Coaching Preferences (Active for This Repository)
+Stack familiarity for this project: [Beginner / Intermediate / Advanced]
 Learning scope: [Whole system / Modules we touch]
+Active Implementation Gear: [Guided Pair / Architect / Hands-On]
+Checkpoint frequency: [Normal / Light / Frequent]
+Question style: [Open-ended / Mixed / Multiple choice]
+Verification Audit: Active
 
 ## Purpose & Requirements
-- [What the software does and user constraints. Requirements do not automatically settle technical design.]
+- [What the software does and user constraints.]
 
 ## Components & Seams
 - [Component name (`path/to/file`) — Status: Implemented | Chosen | Proposed — Responsibility]
@@ -81,9 +87,9 @@ Learning scope: [Whole system / Modules we touch]
 
 ---
 
-## 3. `~/.agents/code-coach/projects/<project-slug>/progress.md`
+## 3. `~/.agents/code-coach/projects/<project-slug>/progress.md` (Project Progress & Pending Checkpoint)
 
-While waiting on any checkpoint, maintain `## Pending decision` at the top so session restarts or context compaction never bypass an open design or implementation gate. Remove `## Pending decision` once resolved and record the outcome in the Decision & Reasoning Log below.
+While waiting on any checkpoint, maintain `## Pending decision` at the top so session restarts or context compaction resume at that exact gate.
 
 ```markdown
 # Learning & Engineering Progress: <project-name>
@@ -104,9 +110,8 @@ Proposed scope / context: [1-2 sentences on what is being decided]
 - None recorded yet.
 
 ## Evidenced Concept Mastery
-<!-- Group by ## Topic. Distinguish:
+<!-- Group by ## Topic with bullets under:
 - Introduced / Explained by AI (Toy Examples & Concepts)
-- Demonstrated by Developer (open-ended reasoning, bug diagnosis, Hands-On / Guided Pair code, or Verification Audit findings)
-- Needs Reinforcement (missed boundary conditions, race conditions, or skipped checks)
-Never record button clicks or product wishes as demonstrated engineering mastery. -->
+- Demonstrated by Developer (reasoning, bug diagnosis, Hands-On / Guided Pair code, or Verification Audit findings)
+- Needs Reinforcement (missed boundary conditions, race conditions, or skipped checks) -->
 ```

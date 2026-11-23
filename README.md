@@ -75,7 +75,7 @@ Pedagogical skills designed to teach, tutor, lead, and verify understanding:
 - **[teach](skills/teach/SKILL.md)**: Structured curriculum and educational mission builder for self-contained HTML lessons and reference sheets.
 - **[ask-me](skills/ask-me/SKILL.md)**: Router over the skills in this repository.
 
-*(Archived / Deprecated: [`deprecated/study-tutor`](deprecated/study-tutor/SKILL.md), superseded by the stateful `study*` suite; [`deprecated/toggle-code-coach`](deprecated/toggle-code-coach/SKILL.md), superseded by `/code-coach on|off|pause|status`.)*
+*(Archived / Deprecated: [`deprecated/study-tutor`](deprecated/study-tutor/SKILL.md), superseded by the stateful `study*` suite; [`deprecated/toggle-code-coach`](deprecated/toggle-code-coach/SKILL.md), superseded by `/code-coach on|off|pause|global|status|reset`.)*
 
 ---
 

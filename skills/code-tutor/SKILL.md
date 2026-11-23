@@ -1,6 +1,6 @@
 ---
 name: code-tutor
-description: Standalone interactive code and concept explainer. Walks through unfamiliar code snippets, language mechanics, or algorithms step-by-step in small chunks with comprehension checks and primary-doc pointers.
+description: Interactive code and concept explainer. Use to walk through unfamiliar code snippets, language mechanics, or algorithms step-by-step.
 argument-hint: "[concept, code snippet, or file/function you want explained]"
 ---
 

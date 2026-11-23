@@ -1,6 +1,6 @@
-# Learning & Curriculum Mastery
+# Learning, Curriculum Mastery & Engineering Coaching
 
-Domain vocabulary for mapping subjects into hierarchical concept trees and acquiring durable mastery through probing, step-by-step teaching, and hands-on practice.
+Domain vocabulary for mapping subjects into hierarchical concept trees, acquiring durable mastery through probing and practice, and driving learning-first software engineering with checkpoints, implementation gears, and verification audits.
 
 ## Concept Topology
 

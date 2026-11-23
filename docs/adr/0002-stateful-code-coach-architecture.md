@@ -21,8 +21,8 @@ We upgrade `skills/code-coach` into a stateful, learning-first engineering coach
 
 1. **Zero-Workspace-Pollution Home-Directory State & Scoped Global Pointer**:
    - All learner state lives under `~/.agents/code-coach/`:
-     - `~/.agents/code-coach/profile.md`: Global developer profile (experience level, stack familiarity, checkpoint frequency, question style, default `Implementation Gear`, and evidenced `Strong / Developing / Revisit` concepts).
-     - `~/.agents/code-coach/projects/<project-slug>/project-map.md` and `progress.md`: Per-project system map (distinguishing `Proposed`, `Chosen`, `Implemented`, and `Unknown (?)` components), decision log, and `## Pending decision`.
+     - `~/.agents/code-coach/profile.md`: Global developer profile (overall experience level, cross-language stack familiarity, global default preferences, and evidenced `Strong / Developing / Revisit` concepts across projects).
+     - `~/.agents/code-coach/projects/<project-slug>/project-map.md` and `progress.md`: Per-project coaching preferences (`Active Implementation Gear`, `Checkpoint frequency`, `Question style`, `Stack familiarity`, `Learning scope`), system map (distinguishing `Proposed`, `Chosen`, `Implemented`, and `Unknown (?)` components), decision log, and `## Pending decision`.
    - Running `/code-coach` with `on | off | pause | global | status | reset` manages a delimited `<!-- code-coach:start --> ... <!-- code-coach:end -->` pointer block inside the user's home-directory global instruction files (`~/.config/opencode/AGENTS.md`, `~/.claude/CLAUDE.md`, `~/.gemini/GEMINI.md`, `~/.codex/AGENTS.md`).
    - The global pointer lists the exact active project paths inline (or `ALL`). In any directory not listed in that pointer, the agent sees the path mismatch immediately with zero extra file reads and applies zero `code-coach` rules.
 2. **Four-Part Coaching Loop with Three `Implementation Gears` and Two-Layer `Verification Audit`**:

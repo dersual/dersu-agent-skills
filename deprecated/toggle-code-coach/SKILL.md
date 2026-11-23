@@ -1,6 +1,6 @@
 ---
 name: toggle-code-coach
-description: "[DEPRECATED: Superseded by /code-coach on|off|pause|status] Toggles active code-coach mode."
+description: "[DEPRECATED: Superseded by /code-coach on|off|pause|global|status|reset] Toggles active code-coach mode."
 disable-model-invocation: true
 ---
 
