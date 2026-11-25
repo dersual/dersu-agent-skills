@@ -34,16 +34,18 @@ Present these baseline rules and ask the user to accept or adjust them:
 
 - **Deny (Unconditional Block)**:
   - `~/.ssh` and `~/.ssh/*` (protects SSH private keys)
-  - Catastrophic system-wipe commands (e.g., `rm -rf /`, `rm -rf ~`)
+  - Root, home, or drive-root wipe commands (e.g., `rm -rf /*`, `rm -rf ~*`, `Remove-Item * -Recurse -Force C:*`)
   - `.git` metadata writes, using only path or glob formats the harness supports (omit relative `.git` paths when the harness rejects them)
 - **Ask (Explicit Confirmation)**:
   - `*.env*` (secrets and API keys; allow `*.env.example` if desired)
   - Cloud sync directories (e.g., `OneDrive`, `Dropbox`, `Google Drive`)
-  - Remote or history-rewriting git commands (e.g., `git push`, `git push --force`, `git reset --hard`, `git clean -fd`)
+  - Normal file deletion commands (e.g., `rm`, `Remove-Item`) so project cleanups still work when approved
+  - Remote, history-rewriting, or destructive git commands (e.g., `git push`, `git reset`, `git clean`, `git rebase`, `git branch -D`, `git checkout --force`, `git stash clear`, `git remote set-url`)
   - Fallback `*` for file writes and unknown shell commands outside designated folders
 - **Allow (Silent Execution)**:
-  - Safe read-only inspection commands (e.g., `ls`, `dir`, `cat`, `rg`, `grep`, `find`, `pwd`, `which`)
-  - Standard local `git` commands (e.g., `status`, `diff`, `log`, `add`, `commit`, `checkout`, `branch`)
+  - Safe read-only inspection commands across POSIX and PowerShell (e.g., `ls`, `dir`, `rg`, `grep`, `find`, `pwd`, `which`, `Get-ChildItem`, `Get-Location`, `Get-Command`, `Select-String`, `Test-Path`)
+  - Shell file-readers (`cat`, `type`, `Get-Content`) only when paired with shell-level `Ask` rules for `*.env*` and `Deny` rules for `~/.ssh`
+  - Standard local `git` commands (e.g., `status`, `diff`, `log`, `add`, `commit`, `checkout`, `branch`, `fetch`, `pull`)
 
 Ask: *"Do you want to accept these baseline rules or modify any of them?"*
 
@@ -72,6 +74,7 @@ Done when: root directory, protected subdirectories, and allowed tools are recor
 1. **Apply Maximum Surface Coverage**:
    - For Global scope, locate the configuration file shared across all interfaces of the harness (Desktop App, CLI, IDE extensions).
    - Consult harness documentation, CLI `--help`, or config directories to confirm three facts: the active storage path, the Auto Mode / Sandbox keys, and whether Auto Mode still pauses on `ask` rules or enforces `deny` rules only.
+   - Check if an orchestrator or ADE (such as Orca) launches the harness, and verify whether its mode defers to the harness config or bypasses `ask` rules.
 
 2. **Locate Project Storage**:
    - For Project scope, locate the in-repo configuration file or centralized project store matching the active workspace.
@@ -79,9 +82,10 @@ Done when: root directory, protected subdirectories, and allowed tools are recor
 3. **Read Before Writing (Live Schema Conformance)**:
    - Read the target configuration file on disk before building changes.
    - Match the active schema, key names, and path format rules (such as absolute-path requirements for sandbox deny rules).
+   - On Windows, include both forward-slash and backslash path variants where the harness matches raw strings.
    - Preserve all unrelated keys and settings.
 
-Done when: target file path, active schema, path constraints, and Auto Mode behavior are verified.
+Done when: target file path, active schema, path constraints, and Auto Mode / ADE behavior are verified.
 
 ---
 
@@ -90,7 +94,7 @@ Done when: target file path, active schema, path constraints, and Auto Mode beha
 Present a 4-part briefing before modifying any file:
 
 1. **Target File Path**: State the resolved absolute path on disk.
-2. **Enforcement and Auto Mode Interaction**: Explain in 1–2 short sentences how the harness enforces the rules and how Auto Mode handles `ask` and `deny`.
+2. **Enforcement and Auto Mode Interaction**: Explain in 1–2 short sentences how the harness enforces the rules and how Auto Mode or any ADE wrapper handles `ask` and `deny`.
 3. **Full Preview Block**: Show the exact configuration block formatted for that file.
 4. **Execution Confirmation**: Ask for explicit approval before writing to disk.
 
