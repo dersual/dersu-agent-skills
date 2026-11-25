@@ -45,7 +45,7 @@ Present these baseline rules and ask the user to accept or adjust them:
 - **Allow (Silent Execution)**:
   - Safe read-only inspection commands across POSIX and PowerShell (e.g., `ls`, `dir`, `rg`, `grep`, `find`, `pwd`, `which`, `Get-ChildItem`, `Get-Location`, `Get-Command`, `Select-String`, `Test-Path`)
   - Shell file-readers (`cat`, `type`, `Get-Content`) only when paired with shell-level `Ask` rules for `*.env*` and `Deny` rules for `~/.ssh`
-  - Standard local `git` commands (e.g., `status`, `diff`, `log`, `add`, `commit`, `checkout`, `branch`, `fetch`, `pull`)
+  - Standard local `git` commands (e.g., `status`, `diff`, `log`, `add`, `commit`, `checkout`, `branch`)
 
 Ask: *"Do you want to accept these baseline rules or modify any of them?"*
 
@@ -73,8 +73,11 @@ Done when: root directory, protected subdirectories, and allowed tools are recor
 
 1. **Apply Maximum Surface Coverage**:
    - For Global scope, locate the configuration file shared across all interfaces of the harness (Desktop App, CLI, IDE extensions).
-   - Consult harness documentation, CLI `--help`, or config directories to confirm three facts: the active storage path, the Auto Mode / Sandbox keys, and whether Auto Mode still pauses on `ask` rules or enforces `deny` rules only.
-   - Check if an orchestrator or ADE (such as Orca) launches the harness, and verify whether its mode defers to the harness config or bypasses `ask` rules.
+   - Consult harness documentation, CLI `--help`, or config directories to confirm the active storage path.
+   - Check the Auto Mode and Sandbox configuration keys.
+   - Verify whether Auto Mode pauses on `ask` rules or enforces `deny` rules only.
+   - Check if an orchestrator or ADE (such as Orca) launches the harness.
+   - Verify whether that orchestrator defers to the harness config or bypasses `ask` rules.
 
 2. **Locate Project Storage**:
    - For Project scope, locate the in-repo configuration file or centralized project store matching the active workspace.
