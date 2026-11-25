@@ -1,104 +1,102 @@
 ---
 name: setup-permissions
-description: Interactively configures runtime permission boundaries (allow, ask, deny) for agent harnesses across workspaces, commands, and sensitive files.
+description: Interactively configures runtime permission boundaries (allow, ask, deny) and Auto Mode posture for agent harnesses across workspaces, commands, and sensitive files.
 ---
 
 # Setup Permissions
 
-Guides the developer through configuring technical permission boundaries across development workspaces, commands, and sensitive paths.
+Configures technical permission boundaries and execution mode defaults across workspaces, commands, and sensitive paths.
 
 ## Process
 
-Use an interactive interview approach (ask questions one at a time) to collect preferences before resolving configuration paths and writing files.
+Interview the user one question at a time to collect preferences before inspecting configuration files and writing changes.
 
 ---
 
-### 1. Inquire About Harness and Target Scope
-
-Prompt the user to identify the target agent environment and the desired configuration scope:
+### 1. Identify Harness, Scope, and Execution Posture
 
 1. **Harness Detection**:
-   - Ask: *"Which agent harness are you configuring? (e.g., Google Antigravity, Claude Code, Cursor, Codex, Other)"*
-   - If environment cues exist (such as active CLI tools, workspace directories, or system prompt identity), offer that detected harness as the recommended option.
+   - Ask: *"Which agent harness are you configuring? (e.g., Google Antigravity, OpenCode, Codex, Claude Code, Cursor)"*
+   - Offer the active harness as the recommended option when environment cues identify it.
 
 2. **Scope Selection**:
    - Ask: *"Which scope are you configuring? (Global / Cross-Surface, Project-Specific, or Both)"*
-   - **Global / Cross-Surface**: Sets machine-wide security invariants that protect the workstation across all projects.
-   - **Project-Specific**: Sets tool runners, sensitive subpaths, or MCP permissions confined strictly to the active repository.
+   - **Global / Cross-Surface**: Sets machine-wide invariants across all projects.
+   - **Project-Specific**: Sets tool runners, protected subpaths, or MCP permissions for the active repository.
+
+3. **Auto Mode and Sandbox Posture**:
+   - Ask: *"Do you want Auto Mode + Sandbox enabled as your primary workflow, with explicit Deny/Ask guardrails for sensitive targets?"*
+   - Recommend **Yes** so routine workspace work runs without constant prompts while guardrails remain enforced.
+   - Verify from harness docs or CLI help whether Auto Mode still pauses on `ask` rules or converts `ask` into `allow` (enforcing `deny` only).
 
 ---
 
-### 2. Present Security Baseline Defaults
+### 2. Confirm Security Baseline Defaults
 
-Communicate the default security invariants to the user and request confirmation:
+Present the baseline rules and ask the user to accept or adjust them:
 
 - **Deny (Unconditional Block)**:
-  - `.git` and `.git/*` (prevents corruption of version control metadata)
-  - `~/.ssh` and `~/.ssh/*` (prevents exposure or modification of SSH private keys)
+  - `~/.ssh` and `~/.ssh/*` (protects SSH private keys)
+  - Catastrophic system-wipe commands (e.g., `rm -rf /`, `rm -rf ~`)
+  - `.git` metadata writes, using only path or glob formats the target harness supports
 - **Ask (Explicit Confirmation)**:
-  - `*.env*` (prevents unreviewed modification of secrets and API keys)
-  - Cloud sync directories (e.g., `OneDrive`, `Dropbox`)
-  - Catch-all fallback (`*`) for writes outside designated developer folders
+  - `*.env*` (secrets and API keys; allow `*.env.example` if desired)
+  - Cloud sync directories (e.g., `OneDrive`, `Dropbox`, `Google Drive`)
+  - Remote or history-rewriting git commands (e.g., `git push`, `git push --force`, `git reset --hard`, `git clean -fd`)
+  - Fallback `*` for file writes and unknown shell commands outside designated folders
+- **Allow (Silent Execution)**:
+  - Safe read-only inspection commands (e.g., `ls`, `dir`, `cat`, `rg`, `grep`, `find`, `pwd`, `which`)
+  - Standard local `git` commands (e.g., `status`, `diff`, `log`, `add`, `commit`, `checkout`, `branch`)
 
-Ask: *"Do you want to accept these baseline security rules or modify any of them?"*
+Ask: *"Do you want to accept these baseline rules or modify any of them?"*
 
 ---
 
-### 3. Inquire About Workspaces and Commands
-
-Gather the user's directory topology through direct questions:
+### 3. Gather Workspace Topology and Tools
 
 1. **Root Coding Directory (Unrestricted File Writes)**:
-   - Ask: *"Which overall root directory stores your coding projects where file creation and editing should execute without confirmation prompts?"*
-   - Example target: `write_file(C:\Users\<user>\Code Stuff)`
+   - Ask: *"Which root directory stores your coding projects where file edits should run without prompts?"*
 
 2. **Protected Subdirectories (Supervised File Writes)**:
-   - Ask: *"Which specific subdirectories inside your coding workspace require confirmation before any write operation (e.g., coursework, exam prep, client work)?"*
-   - Example target: `write_file(C:\Users\<user>\Code Stuff\School Code\*)`
+   - Ask: *"Which subdirectories inside your coding workspace require confirmation before writes (e.g., coursework, exam prep, client work)?"*
 
-3. **Global Command Utilities**:
-   - Ask: *"Which cross-cutting command-line tools should run without confirmation prompts?"*
-   - Default recommendation: `command(git)` and `command(git *)`.
-   - Note: Recommend keeping project-specific runtimes (`pytest`, `npm`, `pdflatex`) out of global configurations. Keep those in project-level configurations.
+3. **Project and Utility Runtimes**:
+   - Ask: *"Which additional command-line tools should run without prompts?"*
+   - Keep project-specific runtimes (`pytest`, `npm`, `pdflatex`) in project-level configurations rather than global configurations.
 
 ---
 
-### 4. Resolve Harness Configuration Location
+### 4. Discover Live Harness Configuration
 
-Determine the exact configuration system for the chosen harness using this discovery protocol:
-
-1. **Apply the Maximum Surface Coverage Rule**:
-   - When configuring Global scope, locate the file that provides the broadest coverage across all interfaces of the harness (Desktop App, CLI, IDE extensions).
-   - Do not configure a single-interface sub-tool if a shared cross-product configuration exists.
-   - Consult harness documentation, CLI help (`--help`), or configuration directories to identify the shared storage layer.
+1. **Apply Maximum Surface Coverage**:
+   - For Global scope, locate the configuration file shared across all interfaces of the harness (Desktop App, CLI, IDE extensions).
+   - Consult harness documentation, CLI `--help`, or config directories to confirm the active storage layer and Auto Mode / Sandbox keys.
 
 2. **Locate Project Storage**:
-   - For Project scope, discover the harness's project-level configuration store.
-   - If the harness supports in-repo configuration (e.g., `.claude/config.json`), target the repository folder.
-   - If the harness uses centralized project indexing (e.g., `~/.<harness>/config/projects/`), locate the file matching the current workspace path.
+   - For Project scope, locate the in-repo configuration file or centralized project store matching the active workspace.
 
 3. **Read Before Writing (Live Schema Conformance)**:
-   - Always read the target file on disk before constructing the configuration.
-   - Inspect existing keys and nesting to determine the active schema on that machine.
-   - Adapt the insertion to match existing keys (e.g., `userSettings.globalPermissionGrants`, `permissions`, `allowedTools`) instead of imposing an assumed schema.
+   - Read the target configuration file on disk before building changes.
+   - Match the active schema, key names, and path format rules (such as absolute-path requirements for sandbox deny rules).
    - Preserve all unrelated keys and settings.
 
 ---
 
-### 5. Transparent Briefing Before Applying Changes
+### 5. Present Briefing Before Writing
 
-Always present a 4-part transparent briefing to the user before modifying any configuration:
+Present a 4-part briefing before modifying any file:
 
 1. **Target File Path**: State the resolved absolute path on disk.
-2. **Enforcement and Schema**: Explain in 1–2 direct sentences how the harness enforces this file and where the rules fit in its schema.
-3. **Full Preview Block**: Render the complete, exact configuration block showing every rule formatted for that specific file.
+2. **Enforcement and Auto Mode Interaction**: Explain in 1–2 direct sentences how the harness enforces the rules and how Auto Mode interacts with `ask` and `deny`.
+3. **Full Preview Block**: Show the complete, exact configuration block formatted for that file.
 4. **Execution Confirmation**: Ask for explicit confirmation before writing to disk.
 
 ---
 
-### 6. Apply, Backup, and Verify
+### 6. Apply, Backup, Verify, and Smoke-Test
 
-1. Upon user approval, create a backup copy of the target file (e.g., `<file>.bak`).
-2. Write or merge the new permission configuration.
-3. Read back the file to confirm file integrity and report the updated absolute path.
-4. If writing is blocked or denied, print the full configuration block with clear instructions for manual placement.
+1. Create a backup copy of the target file (e.g., `<file>.bak`).
+2. Write or merge the updated configuration.
+3. Read back the file to verify syntax and integrity.
+4. Run one harmless command (e.g., `git status` or directory listing) to verify the harness loads the new permissions without sandbox or schema errors.
+5. If writing is blocked, output the full configuration block with manual placement steps.
