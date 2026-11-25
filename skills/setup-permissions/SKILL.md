@@ -1,22 +1,18 @@
 ---
 name: setup-permissions
-description: Interactively configures runtime permission boundaries (allow, ask, deny) and Auto Mode posture for agent harnesses across workspaces, commands, and sensitive files.
+description: Configures agent permission boundaries (allow, ask, deny) and Auto Mode posture. Use when setting up a repository, enabling Auto Mode, reducing confirmation prompts, or fixing sandbox permission errors.
 ---
 
 # Setup Permissions
 
-Configures technical permission boundaries and execution mode defaults across workspaces, commands, and sensitive paths.
-
-## Process
-
-Interview the user one question at a time to collect preferences before inspecting configuration files and writing changes.
+Interview the user one question at a time. Collect all preferences before reading or writing configuration files.
 
 ---
 
 ### 1. Identify Harness, Scope, and Execution Posture
 
 1. **Harness Detection**:
-   - Ask: *"Which agent harness are you configuring? (e.g., Google Antigravity, OpenCode, Codex, Claude Code, Cursor)"*
+   - Ask: *"Which agent harness are you configuring?"*
    - Offer the active harness as the recommended option when environment cues identify it.
 
 2. **Scope Selection**:
@@ -25,20 +21,21 @@ Interview the user one question at a time to collect preferences before inspecti
    - **Project-Specific**: Sets tool runners, protected subpaths, or MCP permissions for the active repository.
 
 3. **Auto Mode and Sandbox Posture**:
-   - Ask: *"Do you want Auto Mode + Sandbox enabled as your primary workflow, with explicit Deny/Ask guardrails for sensitive targets?"*
-   - Recommend **Yes** so routine workspace work runs without constant prompts while guardrails remain enforced.
-   - Verify from harness docs or CLI help whether Auto Mode still pauses on `ask` rules or converts `ask` into `allow` (enforcing `deny` only).
+   - Ask: *"Do you want Auto Mode and Sandbox enabled as your default workflow, with explicit Deny and Ask guardrails?"*
+   - Recommend **Yes** so routine workspace work runs without constant prompts.
+
+Done when: harness, scope, and Auto Mode posture are recorded.
 
 ---
 
 ### 2. Confirm Security Baseline Defaults
 
-Present the baseline rules and ask the user to accept or adjust them:
+Present these baseline rules and ask the user to accept or adjust them:
 
 - **Deny (Unconditional Block)**:
   - `~/.ssh` and `~/.ssh/*` (protects SSH private keys)
   - Catastrophic system-wipe commands (e.g., `rm -rf /`, `rm -rf ~`)
-  - `.git` metadata writes, using only path or glob formats the target harness supports
+  - `.git` metadata writes, using only path or glob formats the harness supports (omit relative `.git` paths when the harness rejects them)
 - **Ask (Explicit Confirmation)**:
   - `*.env*` (secrets and API keys; allow `*.env.example` if desired)
   - Cloud sync directories (e.g., `OneDrive`, `Dropbox`, `Google Drive`)
@@ -49,6 +46,8 @@ Present the baseline rules and ask the user to accept or adjust them:
   - Standard local `git` commands (e.g., `status`, `diff`, `log`, `add`, `commit`, `checkout`, `branch`)
 
 Ask: *"Do you want to accept these baseline rules or modify any of them?"*
+
+Done when: the user confirms the baseline rules or lists exact changes.
 
 ---
 
@@ -64,13 +63,15 @@ Ask: *"Do you want to accept these baseline rules or modify any of them?"*
    - Ask: *"Which additional command-line tools should run without prompts?"*
    - Keep project-specific runtimes (`pytest`, `npm`, `pdflatex`) in project-level configurations rather than global configurations.
 
+Done when: root directory, protected subdirectories, and allowed tools are recorded.
+
 ---
 
 ### 4. Discover Live Harness Configuration
 
 1. **Apply Maximum Surface Coverage**:
    - For Global scope, locate the configuration file shared across all interfaces of the harness (Desktop App, CLI, IDE extensions).
-   - Consult harness documentation, CLI `--help`, or config directories to confirm the active storage layer and Auto Mode / Sandbox keys.
+   - Consult harness documentation, CLI `--help`, or config directories to confirm three facts: the active storage path, the Auto Mode / Sandbox keys, and whether Auto Mode still pauses on `ask` rules or enforces `deny` rules only.
 
 2. **Locate Project Storage**:
    - For Project scope, locate the in-repo configuration file or centralized project store matching the active workspace.
@@ -80,6 +81,8 @@ Ask: *"Do you want to accept these baseline rules or modify any of them?"*
    - Match the active schema, key names, and path format rules (such as absolute-path requirements for sandbox deny rules).
    - Preserve all unrelated keys and settings.
 
+Done when: target file path, active schema, path constraints, and Auto Mode behavior are verified.
+
 ---
 
 ### 5. Present Briefing Before Writing
@@ -87,9 +90,11 @@ Ask: *"Do you want to accept these baseline rules or modify any of them?"*
 Present a 4-part briefing before modifying any file:
 
 1. **Target File Path**: State the resolved absolute path on disk.
-2. **Enforcement and Auto Mode Interaction**: Explain in 1–2 direct sentences how the harness enforces the rules and how Auto Mode interacts with `ask` and `deny`.
-3. **Full Preview Block**: Show the complete, exact configuration block formatted for that file.
-4. **Execution Confirmation**: Ask for explicit confirmation before writing to disk.
+2. **Enforcement and Auto Mode Interaction**: Explain in 1–2 short sentences how the harness enforces the rules and how Auto Mode handles `ask` and `deny`.
+3. **Full Preview Block**: Show the exact configuration block formatted for that file.
+4. **Execution Confirmation**: Ask for explicit approval before writing to disk.
+
+Done when: the user approves the preview block.
 
 ---
 
@@ -98,5 +103,8 @@ Present a 4-part briefing before modifying any file:
 1. Create a backup copy of the target file (e.g., `<file>.bak`).
 2. Write or merge the updated configuration.
 3. Read back the file to verify syntax and integrity.
-4. Run one harmless command (e.g., `git status` or directory listing) to verify the harness loads the new permissions without sandbox or schema errors.
-5. If writing is blocked, output the full configuration block with manual placement steps.
+4. Run one harmless command (e.g., `git status` or directory listing).
+5. Confirm the harness loads the new permissions without sandbox or schema errors.
+6. If writing is blocked, print the full configuration block with manual placement steps.
+
+Done when: the updated file is verified on disk and the smoke-test command succeeds.
