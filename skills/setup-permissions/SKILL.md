@@ -46,6 +46,7 @@ Present these baseline rules and ask the user to accept or adjust them:
   - Safe read-only inspection commands across POSIX and PowerShell (e.g., `ls`, `dir`, `rg`, `grep`, `find`, `pwd`, `which`, `Get-ChildItem`, `Get-Location`, `Get-Command`, `Select-String`, `Test-Path`)
   - Shell file-readers (`cat`, `type`, `Get-Content`) only when paired with shell-level `Ask` rules for `*.env*` and `Deny` rules for `~/.ssh`
   - Standard local `git` commands (e.g., `status`, `diff`, `log`, `add`, `commit`, `checkout`, `branch`)
+  - MCP tools (allow all MCP tools, or allow read-only MCP tools while keeping write/delete MCP tools on `Ask`)
 
 Ask: *"Do you want to accept these baseline rules or modify any of them?"*
 
