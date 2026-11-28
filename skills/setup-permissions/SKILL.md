@@ -1,6 +1,6 @@
 ---
 name: setup-permissions
-description: Configure global or repo agent permissions (allow, ask, deny). Use when setting up permissions, hardening Full access or Auto Mode guardrails, reducing prompts, or fixing sandbox errors.
+description: Configure global or repo agent permissions (allow, ask, deny). Use when hardening Full access or Auto Mode guardrails, reducing prompts, or fixing sandbox errors.
 ---
 
 # Setup Permissions
@@ -14,7 +14,7 @@ Interview the user one question at a time. Collect all preferences before readin
 1. **Harness**: Ask which agent harness to configure. Recommend the active harness when environment cues identify it.
 2. **Scope**: Ask whether to configure **Global / Cross-Surface** (recommended default for machine-wide rules) or **Project-Specific** (only when a repo needs custom isolation).
 3. **Posture**: Ask which execution posture the user wants:
-   - **Full access + Hardened Deny (Recommended)**: Use Full access (or Auto Mode) for normal coding, switch to Ask mode only in protected folders, and put non-negotiable guardrails in `Deny`. Skip per-project `allow` lists.
+   - **Full access + Hardened Deny (Recommended)**: Use Full access (or Auto Mode) for normal coding. Switch to Ask mode only in protected folders. Put non-negotiable guardrails in `Deny`. Skip per-project `allow` lists.
    - **Ask mode + Allowlist**: Fail closed on `Ask` for unknown commands and maintain explicit `Allow` rules for routine tools.
 
 Done when: harness, scope, and posture are recorded.
@@ -49,7 +49,7 @@ Done when: the user confirms the baseline rules or lists exact changes.
 ### 3. Gather Workspace Topology
 
 1. **Root Coding Directory**: Ask which root directory holds coding projects.
-2. **Protected Subdirectories**: Ask which subdirectories require confirmation before writes (e.g., coursework, client work).
+2. **Protected Subdirectories**: Ask which subdirectories require confirmation before writes.
 3. **Additional Runtimes (Ask mode only)**: If using Ask mode, ask which runtimes (`python`, `node`, `npm run`, `dotnet`, `pdflatex`) should run silently. Scope script runners to subcommands where supported.
 
 Done when: root directory, protected subdirectories, and any Ask-mode runtimes are recorded.
